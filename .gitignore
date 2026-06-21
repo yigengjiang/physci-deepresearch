@@ -31,6 +31,7 @@ venv/
 .cache/
 *.lock
 *.log
+test/
 
 # OS
 .DS_Store

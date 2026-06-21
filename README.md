@@ -28,7 +28,7 @@ This repository is the umbrella home for both the benchmark and (later) the agen
 ## Release status
 
 - **Release 1 (this release):** PhySciBench data (on HuggingFace) + a standalone evaluation scorer.
-- **DelveAgent and the full experiment code will be released after the paper is accepted.**
+- **DelveAgent and the full experiment code will be released soon.**
 
 ## Dataset
 
