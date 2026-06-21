@@ -14,7 +14,6 @@ normalized ON LOAD ONLY; the source JSON is never mutated.
 
 import json
 import pathlib
-from typing import Any
 
 from pydantic import BaseModel, Field
 
@@ -29,9 +28,7 @@ class Sample(BaseModel):
     category: str | None = None
     type: str | None = None
     files: list = Field(default_factory=list)
-    explanation: str | None = None
     rubrics: list = Field(default_factory=list)
-    level: Any | None = None
     meta: dict | None = None  # None on public data
     source: str | None = None  # absent on public data; declared for completeness
 
@@ -77,7 +74,7 @@ def load_benchmark(path: str | pathlib.Path) -> list[Sample]:
     """Load `physcibench.json` (a list of records) into `Sample` objects.
 
     Maps JSON `question`->`raw_question`, `answer`->`correct_answer`, reads
-    `id, category, type, files, explanation, rubrics, level` directly, defaults
+    `id, category, type, files, rubrics` directly, defaults
     `dataset_index` to the enumeration index, and normalizes the `category` typo.
     """
     with open(path, encoding="utf-8") as f:
@@ -93,9 +90,7 @@ def load_benchmark(path: str | pathlib.Path) -> list[Sample]:
                 category=_normalize_category(rec.get("category")),
                 type=rec.get("type"),
                 files=rec.get("files") or [],
-                explanation=rec.get("explanation"),
                 rubrics=rec.get("rubrics") or [],
-                level=rec.get("level"),
                 meta=rec.get("meta"),
                 source=rec.get("source"),
                 dataset_index=idx,

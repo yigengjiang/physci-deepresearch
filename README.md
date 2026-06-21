@@ -52,9 +52,7 @@ Each record in `physcibench.json`:
 | `category` | Reporting label (`long-form-answer` / `atomic-answer`) |
 | `type` | Task category (one of the six above) |
 | `files` | Referenced figure/PDF filenames under `files/` |
-| `explanation` | Reference explanation / rationale |
 | `rubrics` | Scoring rubric (for rubric-graded items) |
-| `level` | Difficulty level (currently unpopulated) |
 
 `physcibench.json` (lightweight) and `files/` (figures/PDFs) are **separable** — the scorer is fully functional on `physcibench.json` alone.
 
