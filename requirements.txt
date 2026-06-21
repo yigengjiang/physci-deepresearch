@@ -1,0 +1,11 @@
+# Release 1 — PhySciBench standalone evaluation scorer dependencies.
+# NOTE: DelveAgent / agent runtime deps (openai-agents, sqlmodel, selenium, etc.)
+# are intentionally EXCLUDED in Release 1 to keep the scorer leak-free.
+
+openai==2.20.0
+pydantic>=2.0
+pyyaml
+huggingface_hub
+
+# Optional — only required for the Code Generation task category (code execution sandbox).
+# e2b-code-interpreter

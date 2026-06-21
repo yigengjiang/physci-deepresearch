@@ -1,0 +1,36 @@
+# OMC planning/state artifacts
+.omc/
+
+# Secrets / environment
+.env
+.env.*
+!.env.example
+
+# PhySciBench data — hosted on HuggingFace (littletreee/PhySciBench);
+# downloaded locally (default ./PhySciBench/) at runtime, never committed.
+/PhySciBench/
+*.parquet
+
+# Databases
+*.db
+
+# Eval I/O
+/predictions*.jsonl
+/metrics*.json
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+
+# HuggingFace / caches / logs
+.cache/
+*.lock
+*.log
+
+# OS
+.DS_Store

@@ -1,0 +1,62 @@
+# NOTE: template should include keys {question, response, correct_answer}
+# https://github.com/openai/simple-evals/blob/main/browsecomp_eval.py
+default: |
+  Judge whether the following [response] to [question] is correct or not based on the precise and unambiguous [correct_answer] below.
+
+  [question]: {question}
+
+  [response]: {response}
+
+  Your judgement must be in the format and criteria specified below:
+
+  extracted_final_answer: The final exact answer extracted from the [response]. Put the extracted answer as 'None' if there is no exact, final answer to extract from the response.
+
+  [correct_answer]: {correct_answer}
+
+  reasoning: Explain why the extracted_final_answer is correct or incorrect based on [correct_answer], focusing only on if there are meaningful differences between [correct_answer] and the extracted_final_answer. Do not comment on any background to the problem, do not attempt to solve the problem, do not argue for any answer different than [correct_answer], focus only on whether the answers match.
+
+  correct: Answer 'yes' if extracted_final_answer matches the [correct_answer] given above, or is within a small margin of error for numerical problems. Answer 'no' otherwise, i.e. if there if there is any inconsistency, ambiguity, non-equivalency, or if the extracted answer is incorrect.
+
+  confidence: The extracted confidence score between 0|\%| and 100|\%| from [response]. Put 100 if there is no confidence score available.
+
+# https://github.com/PALIN2018/BrowseComp-ZH/blob/main/prompt.py
+PhySciBench_LongForm: |
+  Judge whether the following [response] to [question] meets the evaluation rubric based on the [correct_answer] provided.
+
+  [question]: {question}
+  [response]: {response}
+  [correct_answer]: {correct_answer}
+
+  # Evaluation Rubric
+
+  {rubric}
+
+  # Scoring Rules
+  - Score 1: The response fully meets the criterion when compared to [correct_answer]
+  - Score 0: The response does not meet the criterion or only partially meets it when compared to [correct_answer]
+
+  # Instructions
+  1. Carefully read the rubric provided above
+  2. Compare the [response] against each criterion using [correct_answer] as the reference standard
+  3. For each criterion, provide detailed reasoning explaining your score
+  4. Assign a score of 1 (meets criterion) or 0 (does not meet criterion) for each
+  5. Consider the weight of each criterion as indicated in the rubric
+  6. Provide your evaluation for all criteria in the rubric
+
+PhySciBench_Atomic: |
+  Judge whether the following [response] to [question] is correct or not based on the precise and unambiguous [correct_answer] below.
+
+  [question]: {question}
+
+  [response]: {response}
+
+  Your judgement must be in the format and criteria specified below:
+
+  extracted_final_answer: The final exact answer extracted from the [response]. Put the extracted answer as 'None' if there is no exact, final answer to extract from the response.
+
+  [correct_answer]: {correct_answer}
+
+  reasoning: Explain why the extracted_final_answer is correct or incorrect based on [correct_answer], focusing only on if there are meaningful differences between [correct_answer] and the extracted_final_answer. Do not comment on any background to the problem, do not attempt to solve the problem, do not argue for any answer different than [correct_answer], focus only on whether the answers match.
+
+  correct: Answer 'yes' if extracted_final_answer matches the [correct_answer] given above, or is within a small margin of error for numerical problems. Answer 'no' otherwise, i.e. if there if there is any inconsistency, ambiguity, non-equivalency, or if the extracted answer is incorrect.
+
